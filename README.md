@@ -1,25 +1,25 @@
+# TrustVault – Secure Document Management System
 
-# 🔐 TrustVault – Secure Document Management System
+TrustVault is a secure document management web application that allows users to upload, manage, download, and share PDF documents with controlled access permissions.
 
-TrustVault is a secure document management platform that allows users to upload, manage, download, and share PDF documents with controlled access permissions.
+It uses JWT authentication, role-based authorization, protected document access, and audit logging to improve document security.
 
-The system provides authentication, role-based access control, secure file storage, and audit logging to improve document security.
+## Features
 
-## 🚀 Features
+- User registration and login
+- JWT-based authentication
+- Role-based access control
+- Secure PDF document uploads
+- Document management
+- Document sharing between users
+- View and download permissions
+- Protected document downloads
+- Audit trail and activity tracking
+- Admin-only user management API
+- Login rate limiting
+- PDF file validation
 
-- User Registration and Login
-- JWT Authentication
-- Role-Based Access Control
-- Secure PDF Document Upload
-- Document Management
-- Document Sharing
-- View and Download Permissions
-- Protected Document Downloads
-- Audit Trail and Activity Tracking
-- Admin User Management
-- Login Rate Limiting
-
-## 🛠️ Technologies Used
+## Technologies Used
 
 **Frontend**
 - React.js
@@ -38,55 +38,60 @@ The system provides authentication, role-based access control, secure file stora
 
 **Security**
 - JSON Web Token (JWT)
-- Multer File Upload
-- Role-Based Authorization
-- PDF File Validation
+- bcrypt password hashing
+- Multer file uploads
+- Role-based authorization
+- PDF validation
+- Helmet security middleware
 
-**Tools**
+**Development Tools**
 - Visual Studio Code
 - Git
 - GitHub
 - PowerShell
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 secure-document-management-system/
-│
-├── backend/
-│   ├── config/
-│   ├── controllers/
-│   ├── middleware/
-│   ├── routes/
-│   └── server.js
-│
-├── frontend/
-│   ├── src/
-│   ├── public/
-│   └── package.json
-│
-├── private_uploads/
-├── .env
-├── .gitignore
-├── package.json
-└── README.md
+|
+|-- backend/
+|   |-- config/
+|   |-- controllers/
+|   |-- middleware/
+|   |-- routes/
+|   |-- services/
+|   |-- server.js
+|
+|-- frontend/
+|   |-- src/
+|   |-- public/
+|   |-- package.json
+|
+|-- private_uploads/
+|-- .env
+|-- .gitignore
+|-- package.json
+|-- README.md
 ```
 
-## ⚙️ Installation and Setup
+## Installation and Setup
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/sowjilakshmiseysetty-gif/secure-document-management-system.git
+git clone https://github.com/sowjilakshmiseytty-gif/secure-document-management-system.git
 ```
 
-### 2. Navigate to the Project
+### 2. Open the Project
 
 ```bash
 cd secure-document-management-system
 ```
 
 ### 3. Install Backend Dependencies
+
+Run this command in the project root:
 
 ```bash
 npm install
@@ -103,22 +108,31 @@ npm install
 
 Create a `.env` file in the project root directory.
 
-Configure the required database connection variables and JWT secret according to the backend configuration.
+Add your own PostgreSQL and JWT configuration:
 
-**Important:** Never upload `.env` or actual secret values to GitHub.
+```env
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=your_database_username
+DB_PASSWORD=your_database_password
+DB_NAME=trustvault_db
+JWT_SECRET=your_long_random_secret
+```
+
+Never upload actual passwords, JWT secrets, or `.env` files to GitHub.
 
 ### 6. Configure PostgreSQL
 
 - Install and start PostgreSQL.
 - Create a database named `trustvault_db`.
 - Configure the database connection in `.env`.
-- Apply the required database tables and schema.
+- Create the required database tables according to the application schema.
 
 ### 7. Start the Backend
 
-Open a terminal:
+Open a PowerShell terminal in the project root:
 
-```bash
+```powershell
 cd backend
 node server.js
 ```
@@ -129,49 +143,55 @@ Backend URL:
 
 ### 8. Start the Frontend
 
-Open another terminal:
+Open another PowerShell terminal in the project root:
 
-```bash
+```powershell
 cd frontend
 npm run dev
 ```
 
-Frontend URL:
+Open the local URL displayed by Vite in your browser. The default port is `5173`; Vite may select another available port if it is occupied.
 
-`http://localhost:5173`
+## User Roles
 
-## 👥 User Roles
-
-| Role | Description |
+| Role | Permissions |
 |---|---|
-| Admin | Manages users and administrative operations |
-| Owner | Uploads and shares documents |
-| Recipient | Accesses documents shared with them according to permissions |
+| Admin | Access administrative user management API |
+| Owner | Upload, manage, and share documents |
+| Recipient | Access documents shared according to permissions |
 
-## 🔒 Security Features
+## Security Features
 
-- JWT-based authentication
-- Role-based access control
+- JWT authentication
+- Password hashing using bcrypt
+- Authentication middleware
+- Admin role verification
 - Permission-based document sharing
+- Protected document downloads
 - PDF file validation
 - Private document storage
-- Protected downloads
 - Login rate limiting
 - Audit logging
 
-## 🧪 Testing Status
+## Testing Status
 
-Successfully tested:
-- User registration
+The following functionality has been tested:
+
 - User login
 - Dashboard access
 - PDF document upload
-- PDF document download
-- Upload audit logging
-- Download audit logging
+- PDF document sharing
+- Recipient document access
+- Document download
+- Audit trail entries
+- Unauthenticated admin API request – HTTP 401
+- Normal user admin API request – HTTP 403
 
-Document sharing and recipient permission testing are currently in progress.
+## Project Objective
 
-## 🎯 Project Objective
+The objective of TrustVault is to develop a secure and user-friendly document management platform that protects important PDF documents through authentication, access permissions, secure storage, and activity monitoring.
 
-To develop a secure and user
+## GitHub Repository
+
+https://github.com/sowjilakshmiseytty-gif/secure-document-management-system
+
