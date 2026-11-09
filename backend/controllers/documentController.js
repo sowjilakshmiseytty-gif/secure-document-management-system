@@ -188,6 +188,7 @@ exports.downloadDocument = async (req, res) => {
 
 // Share document with another user
 exports.shareDocument = async (req, res) => {
+    
     if (req.user.role !== "user") {
     return res.status(403).json({
         message: "Only Document Owners can share documents."
@@ -236,12 +237,19 @@ exports.shareDocument = async (req, res) => {
         }
 
         // Find recipient
-        const recipient = await pool.query(
+        
+// Find recipient
+
+
+const recipient = await pool.query(
     `SELECT id FROM users
      WHERE LOWER(email) = LOWER($1)
-     AND role = 'recipient'`,
+     AND role = 'user'`,
     [email.trim()]
 );
+
+
+
 
         if (recipient.rows.length === 0) {
             return res.status(404).json({
