@@ -18,3 +18,13 @@ backend/dist/
 
 # Logs
 *.log
+
+# Python cache and environments
+__pycache__/
+*.py[codz]
+.venv/
+venv/
+
+# IDE files
+.vscode/
+.idea/
